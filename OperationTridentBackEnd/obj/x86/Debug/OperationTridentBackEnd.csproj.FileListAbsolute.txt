@@ -1,0 +1,11 @@
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/bin/Debug/OperationTridentBackEnd.exe.config
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/bin/Debug/OperationTridentBackEnd.exe
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/bin/Debug/OperationTridentBackEnd.pdb
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/bin/Debug/Google.Protobuf.dll
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/bin/Debug/MySql.Data.dll
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/bin/Debug/Google.Protobuf.xml
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/bin/Debug/MySql.Data.xml
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/obj/x86/Debug/OperationTridentBackEnd.csproj.CoreCompileInputs.cache
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/obj/x86/Debug/OperationTridentBackEnd.exe
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/obj/x86/Debug/OperationTridentBackEnd.pdb
+/home/w2w/Code/OperationTridentBackEnd/OperationTridentBackEnd/obj/x86/Debug/OperationTridentBackEnd.csprojResolveAssemblyReference.cache

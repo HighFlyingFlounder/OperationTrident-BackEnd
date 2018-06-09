@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{D2414A8D-9D02-4F89-BD54-E2D5A4515CAB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>OperationTridentBackEnd</RootNamespace>
+    <AssemblyName>OperationTridentBackEnd</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="core\Conn.cs" />
+    <Compile Include="core\DataMgr.cs" />
+    <Compile Include="core\Main.cs" />
+    <Compile Include="core\Player.cs" />
+    <Compile Include="core\ProtocolBase.cs" />
+    <Compile Include="core\ProtocolBytes.cs" />
+    <Compile Include="core\ProtocolStr.cs" />
+    <Compile Include="core\ServNet.cs" />
+    <Compile Include="core\Sys.cs" />
+    <Compile Include="Logic\HandleBattleMsg.cs" />
+    <Compile Include="Logic\HandleRoomMsg.cs" />
+    <Compile Include="Logic\PlayerData.cs" />
+    <Compile Include="Logic\PlayerTempData.cs" />
+    <Compile Include="Logic\Room.cs" />
+    <Compile Include="Logic\RoomMgr.cs" />
+    <Compile Include="Logic\Scene.cs" />
+    <Compile Include="Logic\ScenePlayer.cs" />
+    <Compile Include="Logic\handleConnMsg.cs" />
+    <Compile Include="Logic\handlePlayerEvent.cs" />
+    <Compile Include="Logic\handlePlayerMsg.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="Google.Protobuf">
+      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.10.7\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
