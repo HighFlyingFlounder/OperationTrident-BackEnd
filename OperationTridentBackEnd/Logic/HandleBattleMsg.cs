@@ -57,8 +57,8 @@ public partial class HandlePlayerMsg
 		float rotX = protocol.GetFloat (start, ref start);
 		float rotY = protocol.GetFloat (start, ref start);
 		float rotZ = protocol.GetFloat (start, ref start);
-		float gunRot = protocol.GetFloat (start, ref start);
-		float gunRoll = protocol.GetFloat (start, ref start);
+		int isRun = protocol.GetInt(start, ref start);
+		int isPush = protocol.GetInt(start, ref start);
 		//获取房间
 		if (player.tempData.status != PlayerTempData.Status.Fight)
 			return;
@@ -78,8 +78,8 @@ public partial class HandlePlayerMsg
 		protocolRet.AddFloat (rotX);
 		protocolRet.AddFloat (rotY);
 		protocolRet.AddFloat (rotZ);
-		protocolRet.AddFloat (gunRot);
-		protocolRet.AddFloat (gunRoll);
+		protocolRet.AddInt (isRun);
+		protocolRet.AddInt (isPush);
 		room.Broadcast (protocolRet);
 	}
 
@@ -123,10 +123,11 @@ public partial class HandlePlayerMsg
 		//解析协议
 		int start = 0;
 		ProtocolBytes protocol = (ProtocolBytes)protoBase;
-		string protoName = protocol.GetString (start, ref start);
-		string enemyName = protocol.GetString (start, ref start);
+		// string protoName = protocol.GetString (start, ref start);
+		// string enemyName = protocol.GetString (start, ref start);
 		float damage = protocol.GetFloat (start, ref start);
 		//作弊校验
+        /*
 		long lastShootTime = player.tempData.lastShootTime;
 		if (Sys.GetTimeStamp () - lastShootTime < 1) 
 		{
@@ -134,12 +135,14 @@ public partial class HandlePlayerMsg
 			return;
 		}
 		player.tempData.lastShootTime = Sys.GetTimeStamp();
+		*/
 		//更多作弊校验 略
 		//获取房间
 		if (player.tempData.status != PlayerTempData.Status.Fight)
 			return;
 		Room room = player.tempData.room;
 		//扣除生命值
+        /*
 		if (!room.list.ContainsKey (enemyName))
 		{
 			Console.WriteLine ("MsgHit not Contains enemy " + enemyName);
@@ -151,16 +154,18 @@ public partial class HandlePlayerMsg
 		if (enemy.tempData.hp <= 0)
 			return;
 		enemy.tempData.hp -= damage;
-		Console.WriteLine("MsgHit " + enemyName + "  hp:" + enemy.tempData.hp + " damage:" + damage);
+        */
+        //Console.WriteLine("MsgHit " + enemyName + "  hp:" + enemy.tempData.hp + " damage:" + damage);
+		Console.WriteLine("MsgHit " + " damage:" + damage);
 		//广播
 		ProtocolBytes protocolRet = new ProtocolBytes();
 		protocolRet.AddString ("Hit");
 		protocolRet.AddString (player.id);
-		protocolRet.AddString (enemy.id);
+		//protocolRet.AddString (enemy.id);
 		protocolRet.AddFloat (damage);
 		room.Broadcast (protocolRet);
 		//胜负判断
-		room.UpdateWin ();   //下一节实现
+		//room.UpdateWin ();   //下一节实现
 	}
 
 

@@ -106,7 +106,7 @@ public class Room
 		foreach(Player p in list.Values)
 		{
 			protocol.AddString(p.id);
-			protocol.AddInt(p.tempData.team);
+			//protocol.AddInt(p.tempData.team);
 			protocol.AddInt(p.data.win);
 			protocol.AddInt(p.data.fail);
 			int isOwner = p.tempData.isOwner? 1: 0;
@@ -120,7 +120,9 @@ public class Room
 	{
 		if (status != Status.Prepare)
 			return false;
-		
+
+		int cnt = list.Count;
+		/*
 		int count1 = 0;
 		int count2 = 0;
 		
@@ -129,10 +131,11 @@ public class Room
 			if(player.tempData.team == 1) count1++;
 			if(player.tempData.team == 2) count2++;
 		}
-		
+
 		if (count1 < 1 || count2 < 1)
 			return false;
-		
+        */
+		if (cnt < 1) return false;
 		return true;
 	}
 
@@ -142,8 +145,9 @@ public class Room
 		ProtocolBytes protocol = new ProtocolBytes ();
 		protocol.AddString ("Fight");
 		status = Status.Fight;
-		int teamPos1 = 1;
-		int teamPos2 = 1;
+		int Pos = 1;
+		//int teamPos1 = 1;
+		//int teamPos2 = 1;
 		lock (list) 
 		{
 			protocol.AddInt(list.Count);
@@ -151,12 +155,13 @@ public class Room
 			{
 				p.tempData.hp = 200;
 				protocol.AddString(p.id);
-				protocol.AddInt(p.tempData.team);
+				protocol.AddInt(Pos++);
+                /*
 				if(p.tempData.team == 1)
 					protocol.AddInt(teamPos1++);
 				else
 					protocol.AddInt(teamPos2++);
-				
+				*/
 				p.tempData.status = PlayerTempData.Status.Fight;
 			}
 			Broadcast(protocol);

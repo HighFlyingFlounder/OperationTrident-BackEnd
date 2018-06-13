@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{D2414A8D-9D02-4F89-BD54-E2D5A4515CAB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OperationTridentBackEnd/Logic/HandleRoomMsg.cs">
+    <Files>
+      <File FileName="OperationTridentBackEnd/core/Conn.cs" Line="11" Column="1" />
+      <File FileName="OperationTridentBackEnd/core/DataMgr.cs" Line="119" Column="1" />
+      <File FileName="OperationTridentBackEnd/core/Player.cs" Line="9" Column="18" />
+      <File FileName="OperationTridentBackEnd/Logic/PlayerData.cs" Line="11" Column="3" />
+      <File FileName="OperationTridentBackEnd/Logic/PlayerTempData.cs" Line="28" Column="27" />
+      <File FileName="OperationTridentBackEnd/Logic/HandleBattleMsg.cs" Line="41" Column="9" />
+      <File FileName="OperationTridentBackEnd/core/Main.cs" Line="1" Column="1" />
+      <File FileName="OperationTridentBackEnd/core/ServNet.cs" Line="203" Column="26" />
+      <File FileName="OperationTridentBackEnd/Logic/Room.cs" Line="113" Column="6" />
+      <File FileName="OperationTridentBackEnd/Logic/HandleRoomMsg.cs" Line="95" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.OperationTridentBackEnd PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
