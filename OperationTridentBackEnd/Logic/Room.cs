@@ -15,7 +15,7 @@ public class Room
 	//玩家
 	public int maxPlayers = 6;
 	public Dictionary<string,Player> list = new Dictionary<string,Player>();
-
+	public int isArrived = 0;
 
 	//添加玩家
 	public bool AddPlayer(Player player)
@@ -171,6 +171,7 @@ public class Room
 	//胜负判断
 	private int IsWin()
 	{
+		/*
 		if (status != Status.Fight)
 			return 0;
 		
@@ -186,6 +187,9 @@ public class Room
 		if(count1 <= 0) return 2;
 		if(count2 <= 0) return 1;
 		return 0;
+		*/
+		if (isArrived == list.Count) return 1;
+		else return 0;
 	}
 
 

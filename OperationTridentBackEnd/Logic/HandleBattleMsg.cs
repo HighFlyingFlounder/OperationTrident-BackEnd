@@ -168,7 +168,22 @@ public partial class HandlePlayerMsg
 		//room.UpdateWin ();   //下一节实现
 	}
 
+	public void MsgSpaceArriveEnd(Player player, ProtocolBase protoBase){
+		ProtocolBytes proto = (ProtocolBytes)protoBase;
+		int start = 0;
+		string name = proto.GetString(start, ref start);
+		int num = proto.GetInt(start, ref start);
+		Console.WriteLine("MsgSpaceArriveEnd: num = " + num);
 
+		ProtocolBytes protocolRet = new ProtocolBytes();
+		protocolRet.AddString("SpaceArriveEnd");
+		protocolRet.AddString(player.id);
+		protocolRet.AddInt(num);
+		Room room = player.tempData.room;
+		room.Broadcast(protocolRet);
+		room.isArrived += 1;
+		room.UpdateWin();
+	}
 
 
 
