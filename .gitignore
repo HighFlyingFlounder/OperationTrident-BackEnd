@@ -2,5 +2,7 @@
 bin/
 obj/
 .vs/
+.vs/OperationTridentBackEnd/xs/UserPrefs.xml
+
 # ignore user setting
 *.csproj.user
