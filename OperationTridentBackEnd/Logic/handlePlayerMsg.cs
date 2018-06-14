@@ -2,7 +2,7 @@ using System;
 
 public partial class HandlePlayerMsg
 {
-	public void MsgRoomBroadCast(Player player, ProtocolBase protoBase){
+	public void MsgBroadCast(Player player, ProtocolBase protoBase){
 
 		ProtocolBytes proto = (ProtocolBytes)protoBase;
 		//string protoName
@@ -10,14 +10,13 @@ public partial class HandlePlayerMsg
 		string protoName = proto.GetString(start, ref start);
 		string sync_content = proto.GetString(start, ref start);
 
-
 		Room room = player.tempData.room;
 		ProtocolBytes protoRet = new ProtocolBytes();
-		protoRet.AddString("RoomBroadCast");
+		protoRet.AddString("BroadCast");
 		protoRet.AddString(sync_content);
-
-		//room.Broadcast()
-
+		protoRet.AddString(player.id);
+		protoRet.AppendBytes(proto.bytes, start, proto.bytes.Length - start);
+		room.Broadcast(protoRet);
 	}
 
 	//获取分数,可用

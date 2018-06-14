@@ -129,4 +129,14 @@ public class ProtocolBytes : ProtocolBase
 		int end = 0;
 		return GetFloat (start, ref end);
 	}
+
+	public void AppendBytes(byte[] originbuff, int start, int length){
+		int tail = bytes.Length;
+		byte[] temp = new byte[length];
+		if (bytes != null)
+			bytes = bytes.Concat(temp).ToArray();
+		else
+			bytes = temp;
+		Array.Copy(originbuff, start, bytes, tail, length);
+	}
 }
