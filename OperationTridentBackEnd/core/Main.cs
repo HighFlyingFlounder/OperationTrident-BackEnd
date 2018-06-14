@@ -12,7 +12,7 @@ namespace Serv
 			DataMgr dataMgr = new DataMgr ();
 			ServNet servNet = new ServNet();
 			servNet.proto = new ProtocolBytes ();
-			servNet.Start("0.0.0.0",8001);
+			servNet.Start("0.0.0.0",8000);
 
 			while(true)
 			{

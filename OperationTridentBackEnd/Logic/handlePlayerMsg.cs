@@ -5,10 +5,17 @@ public partial class HandlePlayerMsg
 	public void MsgRoomBroadCast(Player player, ProtocolBase protoBase){
 
 		ProtocolBytes proto = (ProtocolBytes)protoBase;
+		//string protoName
+		int start = 0;
+		string protoName = proto.GetString(start, ref start);
+		string sync_content = proto.GetString(start, ref start);
+
 
 		Room room = player.tempData.room;
 		ProtocolBytes protoRet = new ProtocolBytes();
 		protoRet.AddString("RoomBroadCast");
+		protoRet.AddString(sync_content);
+
 		//room.Broadcast()
 
 	}
@@ -97,4 +104,19 @@ public partial class HandlePlayerMsg
 		//player.Send(protocolRet);
 		Console.WriteLine("MsgHitRock: " + rock_name);
     }
+
+	public void MsgDead(Player player, ProtocolBase protoBase)
+    {
+        
+        ProtocolBytes protocolRet = new ProtocolBytes();
+        protocolRet.AddString("Dead");
+		protocolRet.AddString(player.id);
+        Room room = player.tempData.room;
+        room.Broadcast(protocolRet);
+        //player.Send(protocolRet);
+		Console.WriteLine("MsgDead: " + player.id);
+		room.isArrived = -1;
+		room.UpdateWin();
+    }
+
 }

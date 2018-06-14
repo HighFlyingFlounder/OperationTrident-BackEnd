@@ -146,6 +146,7 @@ public class Room
 		ProtocolBytes protocol = new ProtocolBytes ();
 		protocol.AddString ("Fight");
 		status = Status.Fight;
+		isArrived = 0;
 		int Pos = 1;
 		//int teamPos1 = 1;
 		//int teamPos2 = 1;
