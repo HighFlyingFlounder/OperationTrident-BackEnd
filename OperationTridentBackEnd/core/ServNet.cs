@@ -139,7 +139,7 @@ public class ServNet
         {
             try
             {
-                int count = conn.socket.EndReceive(ar);
+				int count = conn.socket.EndReceive(ar);
                 //关闭信号
                 if (count <= 0)
                 {
@@ -154,10 +154,18 @@ public class ServNet
                                          conn.buffCount, conn.BuffRemain(),
                                          SocketFlags.None, ReceiveCb, conn);
             }
+			catch (SocketException e)
+            {
+				Console.WriteLine("收到 [SocketException] 断开链接 " + e.Message);
+				//conn.Close();   
+                conn.isUse = false;
+            }
             catch (Exception e)
             {
-                Console.WriteLine("收到 [" + conn.GetAdress() + "] 断开链接 " + e.Message);
-                conn.Close();
+				if(conn.isUse){
+					Console.WriteLine("收到 [" + conn.GetAdress() + "] 断开链接 " + e.Message);
+                    conn.Close();	
+				}
             }
         }
     }
@@ -176,7 +184,7 @@ public class ServNet
         {
             return;
         }
-        //处理消息
+        //处理消息, proto未实例化??
         ProtocolBase protocol = proto.Decode(conn.readBuff, sizeof(Int32), conn.msgLength);
         //单线程处理消息??? 如果消息阻塞怎么办??
         HandleMsg(conn, protocol);

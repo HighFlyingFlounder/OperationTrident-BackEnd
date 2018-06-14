@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+
 
 namespace Serv
 {
@@ -10,11 +12,13 @@ namespace Serv
 			DataMgr dataMgr = new DataMgr ();
 			ServNet servNet = new ServNet();
 			servNet.proto = new ProtocolBytes ();
-			servNet.Start("0.0.0.0",8000);
+			servNet.Start("0.0.0.0",8001);
 
 			while(true)
 			{
-				string str = Console.ReadLine();
+				//string str = Console.ReadLine();
+				string str = "aaa";
+				Thread.Sleep(10000);
 				switch(str)
 				{
 				case "quit":
