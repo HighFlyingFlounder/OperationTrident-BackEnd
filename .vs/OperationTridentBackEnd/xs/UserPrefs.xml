@@ -1,20 +1,9 @@
 ﻿<Properties StartupConfiguration="{D2414A8D-9D02-4F89-BD54-E2D5A4515CAB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OperationTridentBackEnd/Logic/handlePlayerMsg.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OperationTridentBackEnd/Logic/Room.cs">
     <Files>
-      <File FileName="OperationTridentBackEnd/core/ServNet.cs" Line="147" Column="34" />
-      <File FileName="OperationTridentBackEnd/core/DataMgr.cs" Line="24" Column="6" />
-      <File FileName="OperationTridentBackEnd/core/Main.cs" Line="19" Column="7" />
-      <File FileName="OperationTridentBackEnd/core/Conn.cs" Line="71" Column="18" />
-      <File FileName="OperationTridentBackEnd/Logic/PlayerTempData.cs" Line="30" Column="1" />
-      <File FileName="OperationTridentBackEnd/Logic/Room.cs" Line="18" Column="22" />
-      <File FileName="OperationTridentBackEnd/Logic/HandleRoomMsg.cs" Line="99" Column="13" />
-      <File FileName="OperationTridentBackEnd/Logic/handlePlayerMsg.cs" Line="84" Column="30" />
-      <File FileName="OperationTridentBackEnd/Logic/HandleBattleMsg.cs" Line="184" Column="14" />
-      <File FileName="OperationTridentBackEnd/Logic/RoomMgr.cs" Line="1" Column="1" />
-      <File FileName="OperationTridentBackEnd/Logic/handlePlayerEvent.cs" Line="7" Column="3" />
-      <File FileName="OperationTridentBackEnd/Logic/handleConnMsg.cs" Line="12" Column="2" />
-      <File FileName="OperationTridentBackEnd/Logic/PlayerData.cs" Line="12" Column="4" />
-      <File FileName="OperationTridentBackEnd/Logic/Scene.cs" Line="1" Column="1" />
+      <File FileName="OperationTridentBackEnd/core/ServNet.cs" Line="309" Column="10" />
+      <File FileName="OperationTridentBackEnd/Logic/handlePlayerMsg.cs" Line="109" Column="11" />
+      <File FileName="OperationTridentBackEnd/Logic/Room.cs" Line="19" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

@@ -2,6 +2,17 @@ using System;
 
 public partial class HandlePlayerMsg
 {
+	public void MsgRoomBroadCast(Player player, ProtocolBase protoBase){
+
+		ProtocolBytes proto = (ProtocolBytes)protoBase;
+
+		Room room = player.tempData.room;
+		ProtocolBytes protoRet = new ProtocolBytes();
+		protoRet.AddString("RoomBroadCast");
+		//room.Broadcast()
+
+	}
+
 	//获取分数,可用
 	//协议参数：
 	//返回协议：int分数

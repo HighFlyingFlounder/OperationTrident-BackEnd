@@ -16,6 +16,7 @@ public class Room
 	public int maxPlayers = 6;
 	public Dictionary<string,Player> list = new Dictionary<string,Player>();
 	public int isArrived = 0;
+    
 
 	//添加玩家
 	public bool AddPlayer(Player player)
@@ -189,14 +190,15 @@ public class Room
 		return 0;
 		*/
 		if (isArrived == list.Count) return 1;
-		else return 0;
+		else if (isArrived == -1) return 0;
+		else return 2;
 	}
 
 
 	public void UpdateWin()
 	{
 		int isWin = IsWin();
-		if (isWin == 0)
+		if (isWin == 2)
 			return;
 		//改变状态 数值处理
 		lock (list) 
