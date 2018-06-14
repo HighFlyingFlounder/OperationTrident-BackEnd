@@ -67,7 +67,7 @@ public class Conn
 			return;
 		}
 		Console.WriteLine("[断开链接]" + GetAdress());
-		socket.Shutdown(SocketShutdown.Both);
+		socket.Shutdown(SocketShutdown.Both);      
 		socket.Close();
 		isUse = false;
 	}

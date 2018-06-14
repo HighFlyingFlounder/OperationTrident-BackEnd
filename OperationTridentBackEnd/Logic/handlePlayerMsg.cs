@@ -71,4 +71,17 @@ public partial class HandlePlayerMsg
 		player.Send (protocolRet);
 		Console.WriteLine ("MsgGetAchieve " + player.id + player.data.win);
 	}
+
+	public void MsgHitRock(Player player, ProtocolBase protoBase)
+    {
+		int start = 0;
+		ProtocolBytes protocol = (ProtocolBytes)protoBase;
+        string protoName = protocol.GetString(start, ref start);
+		string rock_name = protocol.GetString(start, ref start);
+        ProtocolBytes protocolRet = new ProtocolBytes();
+        protocolRet.AddString("HitRock");
+		protocolRet.AddString(rock_name);
+        player.Send(protocolRet);
+		Console.WriteLine("MsgHitRock: " + rock_name);
+    }
 }
