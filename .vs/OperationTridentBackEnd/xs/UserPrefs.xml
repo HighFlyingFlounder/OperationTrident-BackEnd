@@ -1,7 +1,14 @@
 ﻿<Properties StartupConfiguration="{D2414A8D-9D02-4F89-BD54-E2D5A4515CAB}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OperationTridentBackEnd/core/ServNet.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OperationTridentBackEnd/Logic/handlePlayerMsg.cs">
     <Files>
-      <File FileName="OperationTridentBackEnd/core/ServNet.cs" Line="141" Column="14" />
+      <File FileName="OperationTridentBackEnd/core/ServNet.cs" Line="147" Column="34" />
+      <File FileName="OperationTridentBackEnd/core/DataMgr.cs" Line="24" Column="6" />
+      <File FileName="OperationTridentBackEnd/core/Main.cs" Line="13" Column="6" />
+      <File FileName="OperationTridentBackEnd/core/Conn.cs" Line="71" Column="18" />
+      <File FileName="OperationTridentBackEnd/Logic/PlayerTempData.cs" Line="19" Column="14" />
+      <File FileName="OperationTridentBackEnd/Logic/Room.cs" Line="236" Column="3" />
+      <File FileName="OperationTridentBackEnd/Logic/HandleRoomMsg.cs" Line="12" Column="8" />
+      <File FileName="OperationTridentBackEnd/Logic/handlePlayerMsg.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

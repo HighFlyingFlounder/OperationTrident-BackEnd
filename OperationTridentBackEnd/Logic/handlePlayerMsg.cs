@@ -81,7 +81,9 @@ public partial class HandlePlayerMsg
         ProtocolBytes protocolRet = new ProtocolBytes();
         protocolRet.AddString("HitRock");
 		protocolRet.AddString(rock_name);
-        player.Send(protocolRet);
+		Room room = player.tempData.room;
+		room.Broadcast(protocolRet);
+		//player.Send(protocolRet);
 		Console.WriteLine("MsgHitRock: " + rock_name);
     }
 }
