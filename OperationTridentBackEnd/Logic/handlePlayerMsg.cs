@@ -12,7 +12,6 @@ public partial class HandlePlayerMsg
 
 		Room room = player.tempData.room;
 		ProtocolBytes protoRet = new ProtocolBytes();
-		protoRet.AddString("BroadCast");
 		protoRet.AddString(sync_content);
 		protoRet.AddString(player.id);
 		protoRet.AppendBytes(proto.bytes, start, proto.bytes.Length - start);
