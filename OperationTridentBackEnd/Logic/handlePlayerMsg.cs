@@ -2,22 +2,6 @@ using System;
 
 public partial class HandlePlayerMsg
 {
-	public void MsgBroadCast(Player player, ProtocolBase protoBase){
-
-		ProtocolBytes proto = (ProtocolBytes)protoBase;
-		//string protoName
-		int start = 0;
-		string protoName = proto.GetString(start, ref start);
-		string sync_content = proto.GetString(start, ref start);
-
-		Room room = player.tempData.room;
-		ProtocolBytes protoRet = new ProtocolBytes();
-		protoRet.AddString(sync_content);
-		protoRet.AddString(player.id);
-		protoRet.AppendBytes(proto.bytes, start, proto.bytes.Length - start);
-		room.Broadcast(protoRet);
-	}
-
 	//获取分数,可用
 	//协议参数：
 	//返回协议：int分数
@@ -93,7 +77,7 @@ public partial class HandlePlayerMsg
 		int start = 0;
 		ProtocolBytes protocol = (ProtocolBytes)protoBase;
         string protoName = protocol.GetString(start, ref start);
-		string rock_name = protocol.GetString(start, ref start);
+	   	string rock_name = protocol.GetString(start, ref start);
         ProtocolBytes protocolRet = new ProtocolBytes();
         protocolRet.AddString("HitRock");
 		protocolRet.AddString(player.id);
