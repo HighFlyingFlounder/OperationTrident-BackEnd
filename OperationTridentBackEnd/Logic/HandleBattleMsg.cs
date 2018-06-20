@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 public partial class HandlePlayerMsg
 {
-	//开始战斗,可用, room.StartFight()开始战斗
-	//发送协议: StartFight, int 0/1
-	public void MsgStartFight(Player player, ProtocolBase protoBase)
+    //开始战斗,可用, room.StartGame()开始战斗
+    //发送协议: StartGame, int 0/1
+    public void MsgStartGame(Player player, ProtocolBase protoBase)
 	{
 		ProtocolBytes protocol = new ProtocolBytes ();
-		protocol.AddString ("StartFight");
+		protocol.AddString ("StartGame");
 		//条件判断
 		if (player.tempData.status != PlayerTempData.Status.Room) 
 		{
-			Console.WriteLine ("MsgStartFight status err " + player.id);
+			Console.WriteLine ("MsgStartGame status err " + player.id);
 			protocol.AddInt (-1);
 			player.Send (protocol);
 			return;
@@ -20,7 +20,7 @@ public partial class HandlePlayerMsg
 		
 		if (!player.tempData.isOwner) 
 		{
-			Console.WriteLine ("MsgStartFight owner err " + player.id);
+			Console.WriteLine ("MsgStartGame owner err " + player.id);
 			protocol.AddInt (-1);
 			player.Send (protocol);
 			return;
@@ -29,7 +29,7 @@ public partial class HandlePlayerMsg
 		Room room = player.tempData.room;
 		if(!room.CanStart())
 		{
-			Console.WriteLine ("MsgStartFight CanStart err " + player.id);
+			Console.WriteLine ("MsgStartGame CanStart err " + player.id);
 			protocol.AddInt (-1);
 			player.Send (protocol);
 			return;
@@ -38,14 +38,23 @@ public partial class HandlePlayerMsg
 		//开始战斗
 		protocol.AddInt (0);
 		player.Send (protocol);
-		room.StartFight ();
+		room.StartGame ();
 	}
 
-	//同步单元信息, 
-	//协议参数: float posX, posY, posZ, rotX, rotY, rotZ, gunRot, gunRoll
-	//广播协议: UpdateUnitInfo, string id, float posX, posY, posZ, 
-	// rotX, rotY, rotZ, gunRot, gunRoll
-	public void MsgUpdateUnitInfo(Player player, ProtocolBase protoBase)
+    public void MsgStartFight(Player player, ProtocolBase protoBase)
+    {
+        Room room = player.tempData.room;
+        //需要上锁吗?
+        room.getReadyToFight += 1;
+        if(room.getReadyToFight == room.list.Count)
+            room.StartFight();
+    }
+
+    //同步单元信息, 
+    //协议参数: float posX, posY, posZ, rotX, rotY, rotZ, gunRot, gunRoll
+    //广播协议: UpdateUnitInfo, string id, float posX, posY, posZ, 
+    // rotX, rotY, rotZ, gunRot, gunRoll
+    public void MsgUpdateUnitInfo(Player player, ProtocolBase protoBase)
 	{
 		//获取数值
 		int start = 0;

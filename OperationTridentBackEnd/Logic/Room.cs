@@ -16,6 +16,7 @@ public class Room
 	public int maxPlayers = 6;
 	public Dictionary<string,Player> list = new Dictionary<string,Player>();
 	public int isArrived = 0;
+    public int getReadyToFight = 0;
     
 
 	//添加玩家
@@ -141,37 +142,45 @@ public class Room
 	}
 
 
-	public void StartFight()
+	public void StartGame()
 	{
 		ProtocolBytes protocol = new ProtocolBytes ();
-		protocol.AddString ("Fight");
+		protocol.AddString ("StartGame");
 		status = Status.Fight;
-		isArrived = 0;
-		int Pos = 1;
-		//int teamPos1 = 1;
-		//int teamPos2 = 1;
 		lock (list) 
 		{
 			protocol.AddInt(list.Count);
 			foreach(Player p in list.Values)
 			{
-				p.tempData.hp = 200;
 				protocol.AddString(p.id);
-				protocol.AddInt(Pos++);
-                /*
-				if(p.tempData.team == 1)
-					protocol.AddInt(teamPos1++);
-				else
-					protocol.AddInt(teamPos2++);
-				*/
 				p.tempData.status = PlayerTempData.Status.Fight;
 			}
 			Broadcast(protocol);
 		}
 	}
 
-	//胜负判断
-	private int IsWin()
+    public void StartFight()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("Fight");
+        isArrived = 0;
+        int swopID = 1;
+        lock (list)
+        {
+            protocol.AddInt(list.Count);
+            foreach (Player p in list.Values)
+            {
+                p.tempData.hp = 200;
+                protocol.AddString(p.id);
+                protocol.AddInt(swopID++);
+                p.tempData.status = PlayerTempData.Status.Fight;
+            }
+            Broadcast(protocol);
+        }
+    }
+
+    //胜负判断
+    private int IsWin()
 	{
 		/*
 		if (status != Status.Fight)
