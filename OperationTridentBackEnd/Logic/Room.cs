@@ -218,6 +218,7 @@ public class Room
 		ProtocolBytes protocol = new ProtocolBytes();
 		protocol.AddString ("Result");
 		protocol.AddInt (isWin);
+		Console.WriteLine("Broadcast Result : isWin = " + isWin);
 		Broadcast (protocol);
 	}
 

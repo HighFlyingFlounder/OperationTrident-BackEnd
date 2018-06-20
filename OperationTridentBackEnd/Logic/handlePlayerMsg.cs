@@ -96,6 +96,7 @@ public partial class HandlePlayerMsg
 		string rock_name = protocol.GetString(start, ref start);
         ProtocolBytes protocolRet = new ProtocolBytes();
         protocolRet.AddString("HitRock");
+		protocolRet.AddString(player.id);
 		protocolRet.AddString(rock_name);
 		Room room = player.tempData.room;
 		room.Broadcast(protocolRet);
