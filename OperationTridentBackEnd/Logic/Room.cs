@@ -9,7 +9,8 @@ public class Room
 	public enum Status
 	{
 		Prepare = 1,
-		Fight = 2 ,
+		Loading = 2,
+		Fight = 3 ,
 	}
 	public Status status = Status.Prepare;
 	//玩家
@@ -142,18 +143,18 @@ public class Room
 	}
 
 
-	public void StartGame()
+	public void EnterGame()
 	{
 		ProtocolBytes protocol = new ProtocolBytes ();
-		protocol.AddString ("StartGame");
-		status = Status.Fight;
+		protocol.AddString ("EnterGame");
+		status = Status.Loading;
 		lock (list) 
 		{
 			protocol.AddInt(list.Count);
 			foreach(Player p in list.Values)
 			{
 				protocol.AddString(p.id);
-				p.tempData.status = PlayerTempData.Status.Fight;
+				p.tempData.status = PlayerTempData.Status.Loading;
 			}
 			Broadcast(protocol);
 		}
@@ -162,7 +163,8 @@ public class Room
     public void StartFight()
     {
         ProtocolBytes protocol = new ProtocolBytes();
-        protocol.AddString("Fight");
+        protocol.AddString("StartFight");
+		status = Status.Fight;
         isArrived = 0;
         int swopID = 1;
         lock (list)
@@ -229,6 +231,8 @@ public class Room
 		protocol.AddInt (isWin);
 		Console.WriteLine("Broadcast Result : isWin = " + isWin);
 		Broadcast (protocol);
+		isArrived = 0;
+		getReadyToFight = 0;
 	}
 
 

@@ -16,7 +16,7 @@ public class RoomMgr
 
 	//创建房间
 	public void CreateRoom(Player player)
-	{
+	{   
 		Room room = new Room ();
 		lock (list) 
 		{

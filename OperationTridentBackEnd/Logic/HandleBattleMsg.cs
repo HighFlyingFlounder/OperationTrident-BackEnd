@@ -38,10 +38,10 @@ public partial class HandlePlayerMsg
 		//开始战斗
 		protocol.AddInt (0);
 		player.Send (protocol);
-		room.StartGame ();
+		room.EnterGame ();
 	}
 
-    public void MsgStartFight(Player player, ProtocolBase protoBase)
+    public void MsgFinishLoading(Player player, ProtocolBase protoBase)
     {
         Room room = player.tempData.room;
         //需要上锁吗?
