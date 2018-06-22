@@ -181,7 +181,7 @@ public class Room
         }
     }
 
-    //胜负判断
+	//胜负判断, 失败返回0, 胜利返回1, 未出现胜负返回2
     private int IsWin()
 	{
 		/*
