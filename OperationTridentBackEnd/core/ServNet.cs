@@ -203,7 +203,8 @@ public class ServNet
         string name = protoBase.GetName();
         string methodName = "Msg" + name;
         //连接协议分发
-        if (conn.player == null || name == "HeatBeat" || name == "Logout")
+        if (conn.player == null || name == "HeatBeat" || name == "Logout"
+		   || name == "Delay")
         {
             MethodInfo mm = handleConnMsg.GetType().GetMethod(methodName);
             if (mm == null)

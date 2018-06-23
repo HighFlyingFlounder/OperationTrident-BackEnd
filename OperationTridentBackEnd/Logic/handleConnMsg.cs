@@ -112,4 +112,8 @@ public partial class HandleConnMsg
 			conn.player.Logout();
 		}
 	}
+
+	public void MsgDelay(Conn conn, ProtocolBase protoBase){
+		conn.Send(protoBase);
+	}
 }

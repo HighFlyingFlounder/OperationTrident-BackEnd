@@ -41,8 +41,6 @@
     <Compile Include="Logic\PlayerTempData.cs" />
     <Compile Include="Logic\Room.cs" />
     <Compile Include="Logic\RoomMgr.cs" />
-    <Compile Include="Logic\Scene.cs" />
-    <Compile Include="Logic\ScenePlayer.cs" />
     <Compile Include="Logic\handleConnMsg.cs" />
     <Compile Include="Logic\handlePlayerEvent.cs" />
     <Compile Include="Logic\handlePlayerMsg.cs" />
