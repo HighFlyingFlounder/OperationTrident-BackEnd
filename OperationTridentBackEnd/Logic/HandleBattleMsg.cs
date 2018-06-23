@@ -44,12 +44,19 @@ public partial class HandlePlayerMsg
     public void MsgFinishLoading(Player player, ProtocolBase protoBase)
     {
         Room room = player.tempData.room;
-        //需要上锁吗?
-        room.getReadyToFight += 1;
-        if(room.getReadyToFight == room.list.Count)
-            room.StartFight();
-    }
+		player.tempData.status = PlayerTempData.Status.Loading;
+		ProtocolBytes protoRet = new ProtocolBytes();
+		protoRet.AddString("FinishLoading");
+		protoRet.AddString(player.id);
+		room.Broadcast(protoRet);      
+	}
 
+	public void MsgStartFight(Player player, ProtocolBase protoBase){
+		Room room = player.tempData.room;
+		room.getReadyToFight += 1;
+        if (room.getReadyToFight == room.list.Count)
+            room.StartFight();
+	}
     //同步单元信息, 
     //协议参数: float posX, posY, posZ, rotX, rotY, rotZ, gunRot, gunRoll
     //广播协议: UpdateUnitInfo, string id, float posX, posY, posZ, 
