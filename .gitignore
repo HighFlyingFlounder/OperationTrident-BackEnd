@@ -3,6 +3,9 @@ bin/
 obj/
 .vs/
 .vs/OperationTridentBackEnd/xs/UserPrefs.xml
+log/
 
 # ignore user setting
 *.csproj.user
+*.log
+
