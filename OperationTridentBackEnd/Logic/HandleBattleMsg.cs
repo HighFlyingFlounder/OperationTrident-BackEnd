@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 public partial class HandlePlayerMsg
@@ -12,7 +12,7 @@ public partial class HandlePlayerMsg
 		//条件判断
 		if (player.tempData.status != PlayerTempData.Status.Room) 
 		{
-			Console.WriteLine ("MsgStartGame status err " + player.id);
+			Logger.Default.Info ("MsgStartGame status err " + player.id);
 			protocol.AddInt (-1);
 			player.Send (protocol);
 			return;
@@ -20,7 +20,7 @@ public partial class HandlePlayerMsg
 		
 		if (!player.tempData.isOwner) 
 		{
-			Console.WriteLine ("MsgStartGame owner err " + player.id);
+			Logger.Default.Info ("MsgStartGame owner err " + player.id);
 			protocol.AddInt (-1);
 			player.Send (protocol);
 			return;
@@ -29,7 +29,7 @@ public partial class HandlePlayerMsg
 		Room room = player.tempData.room;
 		if(!room.CanStart())
 		{
-			Console.WriteLine ("MsgStartGame CanStart err " + player.id);
+			Logger.Default.Info ("MsgStartGame CanStart err " + player.id);
 			protocol.AddInt (-1);
 			player.Send (protocol);
 			return;
@@ -147,7 +147,7 @@ public partial class HandlePlayerMsg
 		long lastShootTime = player.tempData.lastShootTime;
 		if (Sys.GetTimeStamp () - lastShootTime < 1) 
 		{
-			Console.WriteLine ("MsgHit开炮作弊 " + player.id);
+			Logger.Default.Info ("MsgHit开炮作弊 " + player.id);
 			return;
 		}
 		player.tempData.lastShootTime = Sys.GetTimeStamp();
@@ -161,7 +161,7 @@ public partial class HandlePlayerMsg
         /*
 		if (!room.list.ContainsKey (enemyName))
 		{
-			Console.WriteLine ("MsgHit not Contains enemy " + enemyName);
+			Logger.Default.Info ("MsgHit not Contains enemy " + enemyName);
 			return;
 		}
 		Player enemy = room.list[enemyName];
@@ -171,8 +171,8 @@ public partial class HandlePlayerMsg
 			return;
 		enemy.tempData.hp -= damage;
         */
-        //Console.WriteLine("MsgHit " + enemyName + "  hp:" + enemy.tempData.hp + " damage:" + damage);
-		Console.WriteLine("MsgHit " + " damage:" + damage);
+        //Logger.Default.Info("MsgHit " + enemyName + "  hp:" + enemy.tempData.hp + " damage:" + damage);
+		Logger.Default.Trace("MsgHit " + " damage:" + damage);
 		//广播
 		ProtocolBytes protocolRet = new ProtocolBytes();
 		protocolRet.AddString ("Hit");
@@ -189,7 +189,7 @@ public partial class HandlePlayerMsg
 		int start = 0;
 		string name = proto.GetString(start, ref start);
 		int num = proto.GetInt(start, ref start);
-		Console.WriteLine("MsgSpaceArriveEnd: num = " + num);
+		Logger.Default.Info("MsgSpaceArriveEnd: num = " + num);
 
 		ProtocolBytes protocolRet = new ProtocolBytes();
 		protocolRet.AddString("SpaceArriveEnd");

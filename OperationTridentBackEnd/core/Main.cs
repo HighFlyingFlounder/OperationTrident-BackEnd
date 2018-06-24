@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 
-
 namespace Serv
 {
 	class MainClass
@@ -13,7 +12,6 @@ namespace Serv
 			ServNet servNet = new ServNet();
 			servNet.proto = new ProtocolBytes ();
 			servNet.Start("0.0.0.0",8000);
-
 			while(true)
 			{
 				//string str = Console.ReadLine();

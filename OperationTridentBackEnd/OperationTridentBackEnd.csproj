@@ -46,6 +46,7 @@
     <Compile Include="Logic\handlePlayerMsg.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Logic\handleBroadCastMsg.cs" />
+    <Compile Include="core\Logger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,10 +58,21 @@
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System.Data" />
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.5.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="NLog.xsd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

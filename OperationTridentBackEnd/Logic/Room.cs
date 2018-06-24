@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq; 
 
@@ -229,7 +229,7 @@ public class Room
 		ProtocolBytes protocol = new ProtocolBytes();
 		protocol.AddString ("Result");
 		protocol.AddInt (isWin);
-		Console.WriteLine("Broadcast Result : isWin = " + isWin);
+		Logger.Default.Info("Broadcast Result : isWin = " + isWin);
 		Broadcast (protocol);
 		isArrived = 0;
 		getReadyToFight = 0;

@@ -66,7 +66,7 @@ public class Conn
 			player.Logout ();
 			return;
 		}
-		Console.WriteLine("[断开链接]" + GetAdress());
+		Logger.Default.Info("[断开链接]" + GetAdress());
 		socket.Shutdown(SocketShutdown.Both);      
 		socket.Close();
 		isUse = false;

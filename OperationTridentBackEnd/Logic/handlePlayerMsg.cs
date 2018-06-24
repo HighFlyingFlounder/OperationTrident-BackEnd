@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 public partial class HandlePlayerMsg
 {
@@ -11,7 +11,7 @@ public partial class HandlePlayerMsg
 		protocolRet.AddString ("GetScore");
 		protocolRet.AddInt (player.data.score);
 		player.Send (protocolRet);
-		Console.WriteLine ("MsgGetScore " + player.id + player.data.score);
+		Logger.Default.Info ("MsgGetScore " + player.id + player.data.score);
 	}
 
 	//增加分数,分数+1,可用
@@ -25,18 +25,19 @@ public partial class HandlePlayerMsg
 		string protoName = protocol.GetString (start, ref start); // 似乎没用
 		//处理
 		player.data.score += 1;
-		Console.WriteLine ("MsgAddScore " + player.id + " " + player.data.score.ToString ());
+		Logger.Default.Info ("MsgAddScore " + player.id + " " + player.data.score.ToString ());
 	}
 
 	//获取玩家列表
 	public void MsgGetList(Player player, ProtocolBase protoBase)
 	{
-		Scene.instance.SendPlayerList (player);
+		//Scene.instance.SendPlayerList (player);
 	}
 	
 	//更新信息(需要修改, 场景广播, 全体广播)
 	//协议参数: float x, float y, float z,
 	//广播协议: UpdateInfo, string player.id, float x, float y, float z, int score
+    /*
 	public void MsgUpdateInfo(Player player, ProtocolBase protoBase)
 	{
 		//获取数值
@@ -47,7 +48,7 @@ public partial class HandlePlayerMsg
 		float y = protocol.GetFloat (start, ref start);
 		float z = protocol.GetFloat (start, ref start);
 		int score = player.data.score;
-		Scene.instance.UpdateInfo (player.id, x, y, z, score);
+		//Scene.instance.UpdateInfo (player.id, x, y, z, score);
 		//广播
 		ProtocolBytes protocolRet = new ProtocolBytes();
 		protocolRet.AddString ("UpdateInfo");
@@ -58,6 +59,7 @@ public partial class HandlePlayerMsg
 		protocolRet.AddInt (score);
 		ServNet.instance.Broadcast (protocolRet);
 	}
+    */
 
 	//获取玩家信息(需要修改)
 	//协议参数:
@@ -69,7 +71,7 @@ public partial class HandlePlayerMsg
 		protocolRet.AddInt (player.data.win);
 		protocolRet.AddInt (player.data.fail);
 		player.Send (protocolRet);
-		Console.WriteLine ("MsgGetAchieve " + player.id + player.data.win);
+		Logger.Default.Info ("MsgGetAchieve " + player.id + player.data.win);
 	}
 
 	public void MsgHitRock(Player player, ProtocolBase protoBase)
@@ -85,7 +87,7 @@ public partial class HandlePlayerMsg
 		Room room = player.tempData.room;
 		room.Broadcast(protocolRet);
 		//player.Send(protocolRet);
-		Console.WriteLine("MsgHitRock: " + rock_name);
+		Logger.Default.Info("MsgHitRock: " + rock_name);
     }
 
 	public void MsgDead(Player player, ProtocolBase protoBase)
@@ -97,7 +99,7 @@ public partial class HandlePlayerMsg
         Room room = player.tempData.room;
         room.Broadcast(protocolRet);
         //player.Send(protocolRet);
-		Console.WriteLine("MsgDead: " + player.id);
+		Logger.Default.Info("MsgDead: " + player.id);
 		room.isArrived = -1;
 		room.UpdateWin();
     }

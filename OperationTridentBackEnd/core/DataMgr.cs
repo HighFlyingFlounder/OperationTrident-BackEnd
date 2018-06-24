@@ -61,7 +61,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]CanRegister fail " + e.Message);
+            Logger.Default.Info("[DataMgr]CanRegister fail " + e.Message);
             return false;
         }
     }
@@ -72,13 +72,13 @@ public class DataMgr
         //防sql注入
         if (!IsSafeStr(id) || !IsSafeStr(pw))
         {
-            Console.WriteLine("[DataMgr]Register 使用非法字符");
+            Logger.Default.Info("[DataMgr]Register 使用非法字符");
             return false;
         }
         //能否注册
         if (!CanRegister(id))
         {
-            Console.WriteLine("[DataMgr]Register !CanRegister");
+            Logger.Default.Info("[DataMgr]Register !CanRegister");
             return false;
         }
         //写入数据库User表
@@ -91,7 +91,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]Register " + e.Message);
+            Logger.Default.Info("[DataMgr]Register " + e.Message);
             return false;
         }
     }
@@ -113,7 +113,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]CreatePlayer 序列化 " + e.Message);
+            Logger.Default.Info("[DataMgr]CreatePlayer 序列化 " + e.Message);
             return false;
         }
         byte[] byteArr = stream.ToArray();
@@ -129,7 +129,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]CreatePlayer 写入 " + e.Message);
+            Logger.Default.Info("[DataMgr]CreatePlayer 写入 " + e.Message);
             return false;
         }
     }
@@ -152,7 +152,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]CheckPassWord " + e.Message);
+            Logger.Default.Info("[DataMgr]CheckPassWord " + e.Message);
             return false;
         }
     }
@@ -185,7 +185,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]GetPlayerData 查询 " + e.Message);
+            Logger.Default.Info("[DataMgr]GetPlayerData 查询 " + e.Message);
             return playerData;
         }
         //反序列化
@@ -198,7 +198,7 @@ public class DataMgr
         }
         catch (SerializationException e)
         {
-            Console.WriteLine("[DataMgr]GetPlayerData 反序列化 " + e.Message);
+            Logger.Default.Info("[DataMgr]GetPlayerData 反序列化 " + e.Message);
             return playerData;
         }
     }
@@ -218,7 +218,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]SavePlayer 序列化 " + e.Message);
+            Logger.Default.Info("[DataMgr]SavePlayer 序列化 " + e.Message);
             return false;
         }
         byte[] byteArr = stream.ToArray();
@@ -235,7 +235,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.WriteLine("[DataMgr]CreatePlayer 写入 " + e.Message);
+            Logger.Default.Info("[DataMgr]CreatePlayer 写入 " + e.Message);
             return false;
         }
     }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 public partial class HandleConnMsg
 {
@@ -7,7 +7,7 @@ public partial class HandleConnMsg
 	public void MsgHeatBeat(Conn conn, ProtocolBase protoBase)
 	{
 		conn.lastTickTime = Sys.GetTimeStamp();
-		Console.WriteLine("[更新心跳时间]" + conn.GetAdress());
+		Logger.Default.Info("[更新心跳时间]" + conn.GetAdress());
 	}
 
 	//注册,可用
@@ -22,7 +22,7 @@ public partial class HandleConnMsg
 		string id = protocol.GetString (start, ref start);
 		string pw = protocol.GetString (start, ref start);
 		string strFormat = "[收到注册协议]" + conn.GetAdress();
-		Console.WriteLine ( strFormat  + " 用户名：" + id + " 密码：" + pw);
+		Logger.Default.Info ( strFormat  + " 用户名：" + id + " 密码：" + pw);
 		//构建返回协议
 		protocol = new ProtocolBytes ();
 		protocol.AddString ("Register");
@@ -53,7 +53,7 @@ public partial class HandleConnMsg
 		string id = protocol.GetString (start, ref start);
 		string pw = protocol.GetString (start, ref start);
 		string strFormat = "[收到登录协议]" + conn.GetAdress();
-		Console.WriteLine (strFormat  + " 用户名：" + id + " 密码：" + pw);
+		Logger.Default.Info (strFormat  + " 用户名：" + id + " 密码：" + pw);
 		//构建返回协议
 		ProtocolBytes protocolRet = new ProtocolBytes ();
 		protocolRet.AddString ("Login");

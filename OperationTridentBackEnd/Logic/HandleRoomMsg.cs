@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 public partial class HandlePlayerMsg
@@ -17,7 +17,7 @@ public partial class HandlePlayerMsg
 		//条件检测
 		if (player.tempData.status != PlayerTempData.Status.None) 
 		{
-			Console.WriteLine ("MsgCreateRoom Fail " + player.id);
+			Logger.Default.Info ("MsgCreateRoom Fail " + player.id);
 			protocol.AddInt(-1);
 			player.Send (protocol);
 			return;
@@ -25,7 +25,7 @@ public partial class HandlePlayerMsg
 		RoomMgr.instance.CreateRoom (player);
 		protocol.AddInt(0);
 		player.Send (protocol);
-		Console.WriteLine ("MsgCreateRoom Ok " + player.id);
+		Logger.Default.Info ("MsgCreateRoom Ok " + player.id);
 	}
 
 	//加入房间
@@ -36,14 +36,14 @@ public partial class HandlePlayerMsg
 		ProtocolBytes protocol = (ProtocolBytes)protoBase;
 		string protoName = protocol.GetString (start, ref start);
 		int index = protocol.GetInt (start, ref start);
-		Console.WriteLine ("[收到MsgEnterRoom]" + player.id + " " + index);
+		Logger.Default.Info ("[收到MsgEnterRoom]" + player.id + " " + index);
 		//
 		protocol = new ProtocolBytes ();
 		protocol.AddString ("EnterRoom");
 		//判断房间是否存在
 		if (index < 0 || index >= RoomMgr.instance.list.Count) 
 		{
-			Console.WriteLine ("MsgEnterRoom index err " + player.id);
+			Logger.Default.Info ("MsgEnterRoom index err " + player.id);
 			protocol.AddInt(-1);
 			player.Send (protocol);
 			return;
@@ -52,7 +52,7 @@ public partial class HandlePlayerMsg
 		//判断房间是状态
 		if(room.status != Room.Status.Prepare)
 		{
-			Console.WriteLine ("MsgEnterRoom status err " + player.id);
+			Logger.Default.Info ("MsgEnterRoom status err " + player.id);
 			protocol.AddInt(-1);
 			player.Send (protocol);
 			return;
@@ -66,7 +66,7 @@ public partial class HandlePlayerMsg
 		}
 		else 
 		{
-			Console.WriteLine ("MsgEnterRoom maxPlayer err " + player.id);
+			Logger.Default.Info ("MsgEnterRoom maxPlayer err " + player.id);
 			protocol.AddInt(-1);
 			player.Send (protocol);
 		}
@@ -78,7 +78,7 @@ public partial class HandlePlayerMsg
 		
 		if (player.tempData.status != PlayerTempData.Status.Room) 
 		{
-			Console.WriteLine ("MsgGetRoomInfo status err " + player.id);
+			Logger.Default.Info ("MsgGetRoomInfo status err " + player.id);
 			return;
 		}
 		Room room = player.tempData.room;
@@ -94,7 +94,7 @@ public partial class HandlePlayerMsg
 		//条件检测
 		if (player.tempData.status != PlayerTempData.Status.Room) 
 		{
-			Console.WriteLine ("MsgLeaveRoom status err " + player.id);
+			Logger.Default.Info ("MsgLeaveRoom status err " + player.id);
 			protocol.AddInt (-1);
 			player.Send (protocol);
 			return;

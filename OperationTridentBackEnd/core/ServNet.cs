@@ -81,7 +81,7 @@ public class ServNet
         listenfd.Listen(maxConn);
         //异步轮巡 Accept
         listenfd.BeginAccept(AcceptCb, null);
-        Console.WriteLine("[服务器]启动成功");
+        Logger.Default.Info("[服务器]启动成功");
     }
 
     // 监听与接收操作异步
@@ -103,7 +103,7 @@ public class ServNet
                 Conn conn = conns[index];
                 conn.Init(socket);
                 string adr = conn.GetAdress();
-                Console.WriteLine("客户端连接 [" + adr + "] conn池ID：" + index);
+                Logger.Default.Info("客户端连接 [" + adr + "] conn池ID：" + index);
                 conn.socket.BeginReceive(conn.readBuff,
                                          conn.buffCount, conn.BuffRemain(),
                                          SocketFlags.None, ReceiveCb, conn);
@@ -113,7 +113,7 @@ public class ServNet
         }
         catch (Exception e)
         {
-            Console.WriteLine("AcceptCb失败:" + e.Message);
+            Logger.Default.Error("AcceptCb失败:" + e.Message);
         }
     }
 
@@ -143,7 +143,7 @@ public class ServNet
                 //关闭信号
                 if (count <= 0)
                 {
-                    Console.WriteLine("收到 [" + conn.GetAdress() + "] 断开链接");
+                    Logger.Default.Info("收到 [" + conn.GetAdress() + "] 断开链接");
                     conn.Close();
                     return;
                 }
@@ -156,14 +156,14 @@ public class ServNet
             }
 			catch (SocketException e)
             {
-				Console.WriteLine("收到 [SocketException] 断开链接 " + e.Message);
+				Logger.Default.Error("收到 [SocketException] 断开链接 " + e.Message);
 				//conn.Close();   
                 conn.isUse = false;
             }
             catch (Exception e)
             {
 				if(conn.isUse){
-					Console.WriteLine("收到 [" + conn.GetAdress() + "] 断开链接 " + e.Message);
+					Logger.Default.Info("收到 [" + conn.GetAdress() + "] 断开链接 " + e.Message);
                     conn.Close();	
 				}
             }
@@ -210,11 +210,11 @@ public class ServNet
             if (mm == null)
             {
                 string str = "[警告]HandleMsg没有处理连接方法 ";
-                Console.WriteLine(str + methodName);
+                Logger.Default.Error(str + methodName);
                 return;
             }
             Object[] obj = new object[] { conn, protoBase };
-            Console.WriteLine("[处理链接消息]" + conn.GetAdress() + " :" + name);
+            Logger.Default.Trace("[处理链接消息]" + conn.GetAdress() + " :" + name);
             mm.Invoke(handleConnMsg, obj);
         }
         //角色协议分发
@@ -224,11 +224,11 @@ public class ServNet
             if (mm == null)
             {
                 string str = "[警告]HandleMsg没有处理玩家方法 ";
-                Console.WriteLine(str + methodName);
+                Logger.Default.Error(str + methodName);
                 return;
             }
             Object[] obj = new object[] { conn.player, protoBase };
-            Console.WriteLine("[处理玩家消息]" + conn.player.id + " :" + name);
+            Logger.Default.Trace("[处理玩家消息]" + conn.player.id + " :" + name);
             mm.Invoke(handlePlayerMsg, obj);
         }
     }
@@ -245,7 +245,7 @@ public class ServNet
         }
         catch (Exception e)
         {
-            Console.WriteLine("[发送消息]" + conn.GetAdress() + " : " + e.Message);
+            Logger.Default.Error("[发送消息]" + conn.GetAdress() + " : " + e.Message);
         }
     }
 
@@ -273,7 +273,7 @@ public class ServNet
     //心跳
     public void HeartBeat()
     {
-        //Console.WriteLine ("[主定时器执行]");
+        //Logger.Default.Info ("[主定时器执行]");
         long timeNow = Sys.GetTimeStamp();
 
         for (int i = 0; i < conns.Length; i++)
@@ -284,7 +284,7 @@ public class ServNet
 
             if (conn.lastTickTime < timeNow - heartBeatTime)
             {
-                Console.WriteLine("[心跳引起断开连接]" + conn.GetAdress());
+                Logger.Default.Info("[心跳引起断开连接]" + conn.GetAdress());
                 lock (conn)
                     conn.Close();
             }
@@ -294,7 +294,7 @@ public class ServNet
     //打印信息
     public void Print()
     {
-        Console.WriteLine("===服务器登录信息===");
+        Logger.Default.Info("===服务器登录信息===");
         for (int i = 0; i < conns.Length; i++)
         {
             if (conns[i] == null)
@@ -306,7 +306,7 @@ public class ServNet
             if (conns[i].player != null)
                 str += "玩家id " + conns[i].player.id;
 
-            Console.WriteLine(str);
+            Logger.Default.Info(str);
         }
     }
 }
