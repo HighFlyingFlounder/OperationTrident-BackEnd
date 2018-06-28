@@ -47,6 +47,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Logic\handleBroadCastMsg.cs" />
     <Compile Include="core\Logger.cs" />
+    <Compile Include="core\UnityObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
