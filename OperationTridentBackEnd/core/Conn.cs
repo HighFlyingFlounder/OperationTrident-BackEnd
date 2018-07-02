@@ -12,7 +12,7 @@ using System.Threading;
 public class Conn
 {
 	//常量
-	public const int BUFFER_SIZE = 1024;
+	public const int BUFFER_SIZE = 4096;
 	//Socket
 	public Socket socket;
 	//是否使用
