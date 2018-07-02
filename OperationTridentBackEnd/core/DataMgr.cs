@@ -23,8 +23,13 @@ public class DataMgr
     public void Connect()
     {
         //数据库
-        string connStr = "Database=game;Data Source=127.0.0.1;";
-		connStr += "User Id=root;Password=123456;port=3306";
+		string database = System.Configuration.ConfigurationManager.AppSettings["Mysql_database"];
+		string source = System.Configuration.ConfigurationManager.AppSettings["Mysql_source"];
+		string userid = System.Configuration.ConfigurationManager.AppSettings["Mysql_userId"];
+		string password = System.Configuration.ConfigurationManager.AppSettings["Mysql_password"];
+		int port = int.Parse(System.Configuration.ConfigurationManager.AppSettings["Mysql_port"]);
+		string connStr = String.Format("Database={0};Data Source={1};", database, source);
+		connStr += String.Format("User Id={0};Password={1};port={2}",  userid, password, port);
         sqlConn = new MySqlConnection(connStr);
         try
         {
