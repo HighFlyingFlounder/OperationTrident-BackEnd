@@ -30,4 +30,16 @@ public partial class HandlePlayerMsg
         protoRet.AppendBytes(proto.bytes, start, proto.bytes.Length - start);
         room.Broadcast(protoRet);
 	}
+
+	public void MsgAIRPC(Player player, ProtocolBase protoBase)
+    {
+        ProtocolBytes proto = (ProtocolBytes)protoBase;
+        int start = 0;
+        string protoName = proto.GetString(start, ref start);
+        Room room = player.tempData.room;
+        ProtocolBytes protoRet = new ProtocolBytes();
+		protoRet.AddString(protoName);
+        protoRet.AppendBytes(proto.bytes, start, proto.bytes.Length - start);
+        room.Broadcast(protoRet);
+    }
 }
