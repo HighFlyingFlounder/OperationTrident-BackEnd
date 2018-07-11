@@ -29,7 +29,9 @@ Back-End of the game OperationTrident
 ### 环境配置完成
 
 ## 启动
--修改启动配置
+
+- 修改启动配置
+
 通过修改.config文件来设置端口，数据库名和连接数据库密码等:
 
 	<appSettings>
@@ -43,13 +45,15 @@ Back-End of the game OperationTrident
 	</appSettings>
 
 - 关闭防火墙
-
-	service iptables stop
+	
+		service iptables stop
+		
 - 启动后台
-直接启动：
 
+服务器直接启动：
+	
 	mono OperationTridentBackEnd.exe
-后台启动：
+服务器后台启动：
 
 	nohup mono OperationTridentBackEnd.exe > out.log &
 
