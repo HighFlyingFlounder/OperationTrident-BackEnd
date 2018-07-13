@@ -17,9 +17,18 @@ namespace Serv
             
 			while(true)
 			{
-				string str = Console.ReadLine();
-				//Thread.Sleep(10000);
-				switch(str)
+                //string str = Console.ReadLine();
+                string str = "";
+                if (Console.In is System.IO.StreamReader)
+                {
+                    str = Console.ReadLine();
+                }
+                else
+                {
+                    Thread.Sleep(10000);
+                }
+                //Thread.Sleep(10000);
+                switch (str)
 				{
 				case "quit":
 					servNet.Close();
