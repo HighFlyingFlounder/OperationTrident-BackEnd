@@ -114,6 +114,7 @@ public class ServNet
         catch (Exception e)
         {
             Logger.Default.Error("AcceptCb失败:" + e.Message);
+			listenfd.BeginAccept(AcceptCb, null);
         }
     }
 
