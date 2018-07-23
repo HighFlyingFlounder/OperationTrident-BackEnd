@@ -21,6 +21,8 @@ public class RoomMgr
 		lock (list) 
 		{
 			list.Add(room);
+            //房间ID等于list中的index
+            room.setRoomID(list.IndexOf(room));
 			room.AddPlayer(player);
 		}
 	}
