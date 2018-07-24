@@ -67,6 +67,9 @@ public class DataMgr
         catch (Exception e)
         {
             Logger.Default.Info("[DataMgr]CanRegister fail " + e.Message);
+            Logger.Default.Error("[DataMgr]CanRegister fail " + e.Message);
+            Logger.Default.Error("[DataMgr]Reconnect Database");
+            Connect();
             return false;
         }
     }
@@ -96,7 +99,9 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Logger.Default.Info("[DataMgr]Register " + e.Message);
+			Logger.Default.Error("[DataMgr]Register " + e.Message);
+            Logger.Default.Error("[DataMgr]Reconnect Database");
+            Connect();
             return false;
         }
     }
@@ -134,7 +139,9 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Logger.Default.Info("[DataMgr]CreatePlayer 写入 " + e.Message);
+			Logger.Default.Error("[DataMgr]CreatePlayer 写入 " + e.Message);
+            Logger.Default.Error("[DataMgr]Reconnect Database");
+            Connect();
             return false;
         }
     }
@@ -157,7 +164,9 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Logger.Default.Info("[DataMgr]CheckPassWord " + e.Message);
+			Logger.Default.Error("[DataMgr]CheckPassWord " + e.Message);
+            Logger.Default.Error("[DataMgr]Reconnect Database");
+            Connect();
             return false;
         }
     }
@@ -240,7 +249,9 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Logger.Default.Info("[DataMgr]CreatePlayer 写入 " + e.Message);
+ 			Logger.Default.Error("[DataMgr]CreatePlayer 写入 " + e.Message);
+            Logger.Default.Error("[DataMgr]Reconnect Database");
+            Connect();
             return false;
         }
     }
