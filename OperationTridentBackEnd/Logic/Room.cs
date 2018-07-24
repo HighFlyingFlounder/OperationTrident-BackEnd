@@ -154,7 +154,7 @@ public class Room
 			foreach(Player p in list.Values)
 			{
 				protocol.AddString(p.id);
-				p.tempData.status = PlayerTempData.Status.Loading;
+				p.tempData.status = PlayerTempData.Status.Fight;
 			}
 			Broadcast(protocol);
 		}
@@ -218,8 +218,10 @@ public class Room
 			status = Status.Prepare;
 			foreach (Player player in list.Values) 
 			{
-				player.tempData.status = PlayerTempData.Status.Room;
-				if (player.tempData.team == isWin)
+                Logger.Default.Info("player.tempData.status after " + player.tempData.status);
+                player.tempData.status = PlayerTempData.Status.Room;
+                Logger.Default.Info("player.tempData.status after " + player.tempData.status);
+                if (player.tempData.team == isWin)
 					player.data.win++;
 				else
 					player.data.fail++;

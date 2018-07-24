@@ -44,7 +44,7 @@ public partial class HandlePlayerMsg
     public void MsgFinishLoading(Player player, ProtocolBase protoBase)
     {
         Room room = player.tempData.room;
-		player.tempData.status = PlayerTempData.Status.Loading;
+		player.tempData.status = PlayerTempData.Status.Fight;
 		ProtocolBytes protoRet = new ProtocolBytes();
 		protoRet.AddString("FinishLoading");
 		protoRet.AddString(player.id);

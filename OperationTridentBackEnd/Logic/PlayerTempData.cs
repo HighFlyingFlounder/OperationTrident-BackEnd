@@ -12,7 +12,6 @@ public class PlayerTempData
 	{
 		None,
 		Room,
-        Loading,
 		Fight,
 	}
 	public Status status;
