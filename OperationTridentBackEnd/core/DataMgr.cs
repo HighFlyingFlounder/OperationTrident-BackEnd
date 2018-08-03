@@ -37,7 +37,7 @@ public class DataMgr
         }
         catch (Exception e)
         {
-            Console.Write("[DataMgr]Connect " + e.Message);
+            Logger.Default.Error("[DataMgr]Connect " + e.Message);
             return;
         }
     }
