@@ -66,14 +66,8 @@ public class DataMgr
         }
         catch (Exception e)
         {
-<<<<<<< HEAD
-            Logger.Default.Info("[DataMgr]CanRegister fail " + e.Message);
-            Logger.Default.Error("[DataMgr]CanRegister fail " + e.Message);
-            Logger.Default.Error("[DataMgr]Reconnect Database");
-=======
             Logger.Default.Error("[DataMgr]CanRegister fail " + e.Message);
 			Logger.Default.Error("[DataMgr]Reconnect Database");
->>>>>>> c08a33f79cbeaa416887d20a7e8802162d028e67
             Connect();
             return false;
         }
@@ -104,13 +98,8 @@ public class DataMgr
         }
         catch (Exception e)
         {
-<<<<<<< HEAD
-			Logger.Default.Error("[DataMgr]Register " + e.Message);
-            Logger.Default.Error("[DataMgr]Reconnect Database");
-=======
             Logger.Default.Error("[DataMgr]Register " + e.Message);
 			Logger.Default.Error("[DataMgr]Reconnect Database");
->>>>>>> c08a33f79cbeaa416887d20a7e8802162d028e67
             Connect();
             return false;
         }
@@ -149,13 +138,8 @@ public class DataMgr
         }
         catch (Exception e)
         {
-<<<<<<< HEAD
-			Logger.Default.Error("[DataMgr]CreatePlayer 写入 " + e.Message);
-            Logger.Default.Error("[DataMgr]Reconnect Database");
-=======
             Logger.Default.Error("[DataMgr]CreatePlayer 写入 " + e.Message);
 			Logger.Default.Error("[DataMgr]Reconnect Database");
->>>>>>> c08a33f79cbeaa416887d20a7e8802162d028e67
             Connect();
             return false;
         }
@@ -179,15 +163,9 @@ public class DataMgr
         }
         catch (Exception e)
         {
-<<<<<<< HEAD
-			Logger.Default.Error("[DataMgr]CheckPassWord " + e.Message);
-            Logger.Default.Error("[DataMgr]Reconnect Database");
-            Connect();
-=======
             Logger.Default.Error("[DataMgr]CheckPassWord " + e.Message);
 			Logger.Default.Error("[DataMgr]Reconnect Database");
 			Connect();
->>>>>>> c08a33f79cbeaa416887d20a7e8802162d028e67
             return false;
         }
     }
@@ -270,13 +248,8 @@ public class DataMgr
         }
         catch (Exception e)
         {
-<<<<<<< HEAD
- 			Logger.Default.Error("[DataMgr]CreatePlayer 写入 " + e.Message);
-            Logger.Default.Error("[DataMgr]Reconnect Database");
-=======
             Logger.Default.Error("[DataMgr]CreatePlayer 写入 " + e.Message);
 			Logger.Default.Error("[DataMgr]Reconnect Database");
->>>>>>> c08a33f79cbeaa416887d20a7e8802162d028e67
             Connect();
             return false;
         }
