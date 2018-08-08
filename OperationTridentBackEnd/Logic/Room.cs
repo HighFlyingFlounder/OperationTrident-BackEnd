@@ -239,16 +239,8 @@ public class Room
 	//中途退出战斗
 	public void ExitFight(Player player)
 	{
-		//摧毁坦克
 		if (list [player.id] != null)
-			list [player.id].tempData.hp = -1;
-		//广播消息
-		ProtocolBytes protocolRet = new ProtocolBytes();
-		protocolRet.AddString ("Hit");
-		protocolRet.AddString (player.id);
-		protocolRet.AddString (player.id);
-		protocolRet.AddFloat (999);
-		Broadcast (protocolRet);
+			list [player.id].tempData.hp = -1;	
 		//增加失败次数
 		if (IsWin () == 0)
 			player.data.fail++;
