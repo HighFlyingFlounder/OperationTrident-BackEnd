@@ -20,16 +20,6 @@ public class Room
 	public int isArrived = 0;
     public int getReadyToFight = 0;
 
-    public void setRoomID(int _id)
-    {
-        room_id = _id;
-    }
-
-    public int getRoomID()
-    {
-        return room_id;
-    }
-
     //添加玩家
     public bool AddPlayer(Player player)
 	{
@@ -124,7 +114,6 @@ public class Room
 			protocol.AddInt(p.data.fail);
 			int isOwner = p.tempData.isOwner? 1: 0;
 			protocol.AddInt(isOwner);
-            protocol.AddInt(room_id);
         }
 		return protocol;
 	}
