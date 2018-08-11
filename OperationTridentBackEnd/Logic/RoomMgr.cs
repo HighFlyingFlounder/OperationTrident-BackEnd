@@ -38,8 +38,11 @@ public class RoomMgr
 		lock(list)
 		{
 			room.DelPlayer(player.id);
-			if(room.list.Count == 0)
+			if(room.list.Count == 0){
+				Logger.Default.Trace("Remove room");
 				list.Remove(room);
+			}
+				
 		}
 	}
 

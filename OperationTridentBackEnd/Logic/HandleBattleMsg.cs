@@ -44,7 +44,9 @@ public partial class HandlePlayerMsg
     public void MsgFinishLoading(Player player, ProtocolBase protoBase)
     {
         Room room = player.tempData.room;
-		player.tempData.status = PlayerTempData.Status.Loading;
+		if(player.tempData.status != PlayerTempData.Status.Fight){
+			Logger.Default.Error("Player " + player.id + " finishLoading with out start FIGHT");
+		}
 		ProtocolBytes protoRet = new ProtocolBytes();
 		protoRet.AddString("FinishLoading");
 		protoRet.AddString(player.id);
@@ -139,39 +141,13 @@ public partial class HandlePlayerMsg
 		//解析协议
 		int start = 0;
 		ProtocolBytes protocol = (ProtocolBytes)protoBase;
-		// string protoName = protocol.GetString (start, ref start);
-		// string enemyName = protocol.GetString (start, ref start);
 		float damage = protocol.GetFloat (start, ref start);
-		//作弊校验
-        /*
-		long lastShootTime = player.tempData.lastShootTime;
-		if (Sys.GetTimeStamp () - lastShootTime < 1) 
-		{
-			Logger.Default.Info ("MsgHit开炮作弊 " + player.id);
-			return;
-		}
-		player.tempData.lastShootTime = Sys.GetTimeStamp();
-		*/
 		//更多作弊校验 略
 		//获取房间
 		if (player.tempData.status != PlayerTempData.Status.Fight)
 			return;
 		Room room = player.tempData.room;
-		//扣除生命值
-        /*
-		if (!room.list.ContainsKey (enemyName))
-		{
-			Logger.Default.Info ("MsgHit not Contains enemy " + enemyName);
-			return;
-		}
-		Player enemy = room.list[enemyName];
-		if (enemy == null)
-			return;
-		if (enemy.tempData.hp <= 0)
-			return;
-		enemy.tempData.hp -= damage;
-        */
-        //Logger.Default.Info("MsgHit " + enemyName + "  hp:" + enemy.tempData.hp + " damage:" + damage);
+
 		Logger.Default.Trace("MsgHit " + " damage:" + damage);
 		//广播
 		ProtocolBytes protocolRet = new ProtocolBytes();

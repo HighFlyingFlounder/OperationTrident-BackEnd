@@ -157,22 +157,21 @@ public class ServNet
             }
 			catch (SocketException e)
             {
-				Logger.Default.Error("收到 [SocketException] 断开链接 " + e.Message);
-				//conn.Close();   
-				if(conn.player != null){
-					conn.player.Logout();	
+				if(conn.isUse){
+    				Logger.Default.Error("收到 [SocketException] 断开链接 " + e.Message);
+    				if(conn.player != null){
+    					conn.player.Logout();	
+    				}
 				}
-                conn.isUse = false;
             }
             catch (Exception e)
             {
 				if(conn.isUse){
-					Logger.Default.Info("收到 [" + conn.GetAdress() + "] 断开链接 " + e.Message);
+					Logger.Default.Error("收到 [" + conn.GetAdress() + "] 断开链接 " + e.Message);
 					if (conn.player != null)
                     {
                         conn.player.Logout();
                     }
-                    conn.Close();	
 				}
             }
         }

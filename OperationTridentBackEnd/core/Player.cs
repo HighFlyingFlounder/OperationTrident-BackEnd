@@ -54,6 +54,7 @@ public class Player
     //下线
     public bool Logout()
     {
+		Logger.Default.Trace("Player " + id + " Logout");
         //事件处理，稍后实现
         ServNet.instance.handlePlayerEvent.OnLogout(this);
         //保存

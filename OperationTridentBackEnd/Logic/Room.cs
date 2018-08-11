@@ -5,7 +5,6 @@ using System.Linq;
 //房间
 public class Room
 {
-    private int room_id;
 	//状态
 	public enum Status
 	{
@@ -59,6 +58,7 @@ public class Room
 	//删除玩家
 	public void DelPlayer(string id)
 	{
+		Logger.Default.Trace("DelPlayer " + id);
 		lock (list) 
 		{
 			if (!list.ContainsKey(id))
@@ -239,12 +239,13 @@ public class Room
 	//中途退出战斗
 	public void ExitFight(Player player)
 	{
+		Logger.Default.Trace("Player " + player.id + " ExitFight");
 		if (list [player.id] != null)
 			list [player.id].tempData.hp = -1;	
 		//增加失败次数
 		if (IsWin () == 0)
 			player.data.fail++;
 		//胜负判断
-		UpdateWin();
+		//UpdateWin();
 	}
 }
