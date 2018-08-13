@@ -66,14 +66,14 @@ public class Conn
 			player.Logout ();
 			return;
 		}
-		Logger.Default.Info("[断开链接]" + GetAdress());
 		try{
+			Logger.Default.Info("[断开链接]" + GetAdress());
 			socket.Shutdown(SocketShutdown.Both);
             socket.Close();	
 		}
 		catch (SocketException e)
         {
-            Logger.Default.Error("Conn Close 收到 [SocketException] 断开链接 " + e.Message);
+            Logger.Default.Error("[Conn Close 收到 Exception] " + e.Message);
 			this.socket = null;            
         }
 		isUse = false;

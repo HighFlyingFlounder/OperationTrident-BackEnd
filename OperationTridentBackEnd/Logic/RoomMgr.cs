@@ -6,9 +6,11 @@ public class RoomMgr
 {
 	//单例
 	public static RoomMgr instance;
+	public static int RoomNum;
 	public RoomMgr()
 	{
 		instance = this;
+		RoomNum = 0;
 	}
 	
 	//房间列表
@@ -18,6 +20,8 @@ public class RoomMgr
 	public void CreateRoom(Player player)
 	{   
 		Room room = new Room ();
+		room.roomId = RoomMgr.RoomNum;
+		++RoomMgr.RoomNum;
 		lock (list) 
 		{
 			list.Add(room);
@@ -61,6 +65,7 @@ public class RoomMgr
 			Room room = list[i];
 			protocol.AddInt(room.list.Count);
 			protocol.AddInt((int)room.status);
+			protocol.AddInt(room.roomId);
 		}
 		return protocol;
 	}

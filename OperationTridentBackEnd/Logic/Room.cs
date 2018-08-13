@@ -5,6 +5,7 @@ using System.Linq;
 //房间
 public class Room
 {
+	public int roomId;
 	//状态
 	public enum Status
 	{
@@ -30,9 +31,11 @@ public class Room
 			tempData.room = this; 
 			tempData.team = SwichTeam ();
 			tempData.status = PlayerTempData.Status.Room;
-			
-			if(list.Count == 0)
+
+			if (list.Count == 0)
 				tempData.isOwner = true;
+			else
+				tempData.isOwner = false;
 			string id = player.id;
 			list.Add(id, player);
 		}
@@ -125,6 +128,10 @@ public class Room
 			return false;
 
 		int cnt = list.Count;
+		foreach (Player player in list.Values){
+			if (player.tempData.status != PlayerTempData.Status.Room)
+				return false;
+		}
 		/*
 		int count1 = 0;
 		int count2 = 0;
@@ -225,6 +232,7 @@ public class Room
 					player.data.fail++;
 			}
 		}
+        
 		//广播
 		ProtocolBytes protocol = new ProtocolBytes();
 		protocol.AddString ("Result");

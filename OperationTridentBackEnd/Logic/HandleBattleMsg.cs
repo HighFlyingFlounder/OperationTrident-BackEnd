@@ -8,16 +8,8 @@ public partial class HandlePlayerMsg
     public void MsgStartGame(Player player, ProtocolBase protoBase)
 	{
 		ProtocolBytes protocol = new ProtocolBytes ();
-		protocol.AddString ("StartGame");
-		//条件判断
-		if (player.tempData.status != PlayerTempData.Status.Room) 
-		{
-			Logger.Default.Info ("MsgStartGame status err " + player.id);
-			protocol.AddInt (-1);
-			player.Send (protocol);
-			return;
-		}
-		
+		protocol.AddString("StartGame");
+       
 		if (!player.tempData.isOwner) 
 		{
 			Logger.Default.Info ("MsgStartGame owner err " + player.id);
