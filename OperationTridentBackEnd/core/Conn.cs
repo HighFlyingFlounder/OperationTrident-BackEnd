@@ -71,7 +71,7 @@ public class Conn
 			socket.Shutdown(SocketShutdown.Both);
             socket.Close();	
 		}
-		catch (SocketException e)
+		catch (Exception e)
         {
             Logger.Default.Error("[Conn Close 收到 Exception] " + e.Message);
 			this.socket = null;            
